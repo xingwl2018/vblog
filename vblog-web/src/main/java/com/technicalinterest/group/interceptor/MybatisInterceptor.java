@@ -32,6 +32,7 @@ import java.util.regex.Matcher;
 @Intercepts({ @Signature(type = Executor.class, method = "update", args = { MappedStatement.class, Object.class }),
         @Signature(type = Executor.class, method = "query", args = { MappedStatement.class, Object.class,
                 RowBounds.class, ResultHandler.class }) })
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class MybatisInterceptor implements Interceptor {
 
 
@@ -63,7 +64,7 @@ public class MybatisInterceptor implements Interceptor {
         String sql = showSql(configuration, boundSql);
         StringBuilder str = new StringBuilder(100);
         str.append(sqlId);
-        str.append(":");
+        str.append(":  ");
         str.append(sql);
         return str.toString();
     }

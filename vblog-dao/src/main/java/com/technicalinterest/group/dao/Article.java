@@ -11,7 +11,7 @@ import lombok.Data;
  * @since: 0.1
  **/
 @Data
-public class Article extends Base{
+public class Article extends BaseDao {
 	/** 
 	* 标题
 	*/ 
@@ -23,7 +23,7 @@ public class Article extends Base{
 	/**
 	 * 是否置顶
 	 */
-	private Short isTop;
+	private Short isTop=0;
 	/**
 	 * 分类id
 	 */
@@ -35,12 +35,20 @@ public class Article extends Base{
 	/**
 	 * 标签id
 	 */
-	private Long  tag;
+	private Long  tagId;
 	
 	/** 
 	* 文章作者
 	*/ 
 	private String userName;
+	/**
+	 * 文章状态 0：草稿，1：发布
+	 */
+	private Short state=0;
+	/**
+	 * 文章状态阅量
+	 */
+	private Long readCount;
 
 
 	

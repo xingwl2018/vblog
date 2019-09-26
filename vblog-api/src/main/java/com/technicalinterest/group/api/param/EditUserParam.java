@@ -13,7 +13,7 @@ import lombok.Data;
  * @since: 0.1
  **/
 @Data
-@ApiModel(description = "注册用户参数")
+@ApiModel(description = "更新用户数据参数")
 public class EditUserParam {
 	/**
 	 * 密码
@@ -29,5 +29,8 @@ public class EditUserParam {
 
 	@ApiModelProperty(value = "昵称")
 	private String nickName;
+
+	@ApiModelProperty(value = "个人简介")
+	private String userSummary;
 
 }

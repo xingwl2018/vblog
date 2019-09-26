@@ -1,6 +1,7 @@
 package com.technicalinterest.group.dao;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +16,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends Base {
+@Builder
+public class User extends BaseDao {
 	/**
 	 * 用户名
 	 */
@@ -29,7 +31,7 @@ public class User extends Base {
 	 */
 	private String passWord;
 	/**
-	 * 头像
+	 * 邮件
 	 */
 	private String email;
 	/**
@@ -41,8 +43,16 @@ public class User extends Base {
 	 */
 	private Integer integral;
 	/**
-	 * 状态0：待激活，1：已激活ßßß
+	 * 博客等级
+	 */
+	private Short grade;
+	/**
+	 * 状态0：待激活，1：已激活
 	 */
 	private Short state;
+	/**
+	 * 个人简介
+	 */
+	private String userSummary;
 
 }

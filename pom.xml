@@ -13,7 +13,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.6.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
     </parent>
 
     <modules>
@@ -24,19 +24,26 @@
     </modules>
 
 
-
     <properties>
+        <profiles.dir>src/profiles</profiles.dir>
         <vblog.version>0.0.1-SNAPSHOT</vblog.version>
         <java.version>1.8</java.version>
         <springfox-swagger2.version>2.7.0</springfox-swagger2.version>
         <swagger.version>1.5.13</swagger.version>
         <mysql.version>8.0.15</mysql.version>
+        <druid.version>1.1.6</druid.version>
         <lombok.version>1.18.8</lombok.version>
         <redis.version>2.1.5.RELEASE</redis.version>
         <collections.version>3.2.1</collections.version>
         <fastjson.version>1.2.38</fastjson.version>
         <mybatis.version>2.0.1</mybatis.version>
         <swagger-bootstrap-ui.version>1.9.4</swagger-bootstrap-ui.version>
+        <pagehelper.version>5.1.2</pagehelper.version>
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <thumbnailator.version>0.4.8</thumbnailator.version>
+        <distributelock.version>1.1.0</distributelock.version>
+        <aop.version>2.1.6.RELEASE</aop.version>
+        <apache.collections.version>4.4</apache.collections.version>
     </properties>
 
     <dependencyManagement>
@@ -46,6 +53,12 @@
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
+            </dependency>
+            <!--druid连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid</artifactId>
+                <version>${druid.version}</version>
             </dependency>
 
             <!--mybaits -->
@@ -103,9 +116,44 @@
                 <artifactId>swagger-bootstrap-ui</artifactId>
                 <version>${swagger-bootstrap-ui.version}</version>
             </dependency>
+            <!--mybatis分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>${pagehelper.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+            <!--图片压缩-->
+            <dependency>
+                <groupId>net.coobird</groupId>
+                <artifactId>thumbnailator</artifactId>
+                <version>${thumbnailator.version}</version>
+            </dependency>
+            <!--分布式锁-->
+            <dependency>
+                <groupId>com.github.blackshadowwalker.spring</groupId>
+                <artifactId>spring-distributelock</artifactId>
+                <version>${distributelock.version}</version>
+            </dependency>
+            <!--APO-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-aop</artifactId>
+                <version>${aop.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${apache.collections.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
-
 
 
 </project>

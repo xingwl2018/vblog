@@ -12,11 +12,15 @@ public class UrlConstant {
 
     public static final String ACCESS_TOKEN_STRING = "accessToken";
 
+    public static final String NOT_AUTH_URL_STRING = "/vblog/view/";
+
     public static final String LOGIN_URL_STRING = "login";
 
     public static final String LOGOUT_URL_STRING = "logout";
 
     public static final String NEW_URL_STRING = "user/new";
+
+    public static final String DOC_URL_STRING = "swagger-resources";
 
     public static final String CONTENT_TYPE_STRING = "text/json;charset=UTF-8";
 

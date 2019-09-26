@@ -1,11 +1,9 @@
 package com.technicalinterest.group.service.dto;
 
-import io.swagger.annotations.ApiModel;
-import io.swagger.annotations.ApiModelProperty;
-import io.swagger.annotations.ApiParam;
+import com.technicalinterest.group.dto.RoleAuthDTO;
 import lombok.Data;
 
-import javax.validation.constraints.NotBlank;
+import java.util.List;
 
 /**
  * @package: com.shuyu.blog.vo
@@ -41,4 +39,22 @@ public class UserDTO {
      * 积分
      */
     private Integer integral;
+
+    /**
+     * 个人简介
+     */
+    private String userSummary;
+    /**
+     * 博客等级
+     */
+    private Short grade;
+    /**
+     * 角色等级 1;管理员 2：普通用户
+     */
+    private Short roleType;
+
+    /**
+     * 权限列表
+     */
+    private List<RoleAuthDTO> authList;
 }

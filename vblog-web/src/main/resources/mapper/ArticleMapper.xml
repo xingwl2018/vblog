@@ -8,12 +8,14 @@
         <result column="is_top" property="isTop"/>
         <result column="category_id" property="categoryId"/>
         <result column="is_review" property="isReview"/>
-        <result column="tag" property="tag"/>
+        <result column="tag_id" property="tagId"/>
         <result column="user_name" property="userName"/>
         <result column="id" property="id"/>
         <result column="is_del" property="isDel"/>
         <result column="create_time" property="createTime"/>
         <result column="update_time" property="updateTime"/>
+        <result column="state" property="state"/>
+        <result column="read_count" property="readCount"/>
     </resultMap>
 
     <!--auto generated Code-->
@@ -23,58 +25,62 @@
         `is_top`,
         `category_id`,
         `is_review`,
-        `tag`,
+        `tag_id`,
         `user_name`,
         `id`,
         `is_del`,
         `create_time`,
-        `update_time`
-    </sql>
+        `update_time`,
+        `state`,
+</sql>
 
     <!--auto generated Code-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO article (
+        INSERT INTO v_article (
             `title`,
             `submit`,
             `is_top`,
             `category_id`,
             `is_review`,
-            `tag`,
+            `tag_id`,
             `user_name`,
             `id`,
             `is_del`,
             `create_time`,
-            `update_time`
+            `update_time`,
+            `state`
         ) VALUES (
             #{pojo.title},
             #{pojo.submit},
             #{pojo.isTop},
             #{pojo.categoryId},
             #{pojo.isReview},
-            #{pojo.tag},
+            #{pojo.tagId},
             #{pojo.userName},
             #{pojo.id},
             #{pojo.isDel},
             #{pojo.createTime},
-            #{pojo.updateTime}
+            #{pojo.updateTime},
+            #{pojo.state}
         )
     </insert>
 
     <!--auto generated Code-->
     <insert id="insertSelective" useGeneratedKeys="true" keyProperty="pojo.id">
-        INSERT INTO article
+        INSERT INTO v_article
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="pojo.title!=null"> `title`,</if>
-            <if test="pojo.submit!=null"> `submit`,</if>
-            <if test="pojo.isTop!=null"> `is_top`,</if>
-            <if test="pojo.categoryId!=null"> `category_id`,</if>
-            <if test="pojo.isReview!=null"> `is_review`,</if>
-            <if test="pojo.tag!=null"> `tag`,</if>
-            <if test="pojo.userName!=null"> `user_name`,</if>
-            <if test="pojo.id!=null"> `id`,</if>
-            <if test="pojo.isDel!=null"> `is_del`,</if>
-            <if test="pojo.createTime!=null"> `create_time`,</if>
-            <if test="pojo.updateTime!=null"> `update_time`,</if>
+            <if test="pojo.title!=null">`title`,</if>
+            <if test="pojo.submit!=null">`submit`,</if>
+            <if test="pojo.isTop!=null">`is_top`,</if>
+            <if test="pojo.categoryId!=null">`category_id`,</if>
+            <if test="pojo.isReview!=null">`is_review`,</if>
+            <if test="pojo.tagId!=null">`tag_id`,</if>
+            <if test="pojo.userName!=null">`user_name`,</if>
+            <if test="pojo.id!=null">`id`,</if>
+            <if test="pojo.isDel!=null">`is_del`,</if>
+            <if test="pojo.createTime!=null">`create_time`,</if>
+            <if test="pojo.updateTime!=null">`update_time`,</if>
+            <if test="pojo.state!=null">`state`</if>
         </trim>
         VALUES
         <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -83,18 +89,19 @@
             <if test="pojo.isTop!=null">#{pojo.isTop},</if>
             <if test="pojo.categoryId!=null">#{pojo.categoryId},</if>
             <if test="pojo.isReview!=null">#{pojo.isReview},</if>
-            <if test="pojo.tag!=null">#{pojo.tag},</if>
+            <if test="pojo.tagId!=null">#{pojo.tagId},</if>
             <if test="pojo.userName!=null">#{pojo.userName},</if>
             <if test="pojo.id!=null">#{pojo.id},</if>
             <if test="pojo.isDel!=null">#{pojo.isDel},</if>
             <if test="pojo.createTime!=null">#{pojo.createTime},</if>
             <if test="pojo.updateTime!=null">#{pojo.updateTime},</if>
+            <if test="pojo.state!=null">#{pojo.state}</if>
         </trim>
     </insert>
 
     <!--auto generated Code-->
     <insert id="insertList">
-        INSERT INTO article (
+        INSERT INTO v_article(
         <include refid="all_column"/>
         )VALUES
         <foreach collection="pojos" item="pojo" index="index" separator=",">
@@ -104,33 +111,127 @@
             #{pojo.isTop},
             #{pojo.categoryId},
             #{pojo.isReview},
-            #{pojo.tag},
+            #{pojo.tagId},
             #{pojo.userName},
             #{pojo.id},
             #{pojo.isDel},
             #{pojo.createTime},
-            #{pojo.updateTime}
+            #{pojo.updateTime},
+            #{pojo.state}
             )
         </foreach>
     </insert>
 
     <!--auto generated Code-->
     <update id="update">
-        UPDATE article
+
+        UPDATE v_article
         <set>
-            <if test="pojo.title != null"> `title` = #{pojo.title}, </if>
-            <if test="pojo.submit != null"> `submit` = #{pojo.submit}, </if>
-            <if test="pojo.isTop != null"> `is_top` = #{pojo.isTop}, </if>
-            <if test="pojo.categoryId != null"> `category_id` = #{pojo.categoryId}, </if>
-            <if test="pojo.isReview != null"> `is_review` = #{pojo.isReview}, </if>
-            <if test="pojo.tag != null"> `tag` = #{pojo.tag}, </if>
-            <if test="pojo.userName != null"> `user_name` = #{pojo.userName}, </if>
-            <if test="pojo.id != null"> `id` = #{pojo.id}, </if>
-            <if test="pojo.isDel != null"> `is_del` = #{pojo.isDel}, </if>
-            <if test="pojo.createTime != null"> `create_time` = #{pojo.createTime}, </if>
-            <if test="pojo.updateTime != null"> `update_time` = #{pojo.updateTime} </if>
+            <if test="pojo.title != null">`title` = #{pojo.title},</if>
+            <if test="pojo.submit != null">`submit` = #{pojo.submit},</if>
+            <if test="pojo.isTop != null">`is_top` = #{pojo.isTop},</if>
+            <if test="pojo.categoryId != null">`category_id` = #{pojo.categoryId},</if>
+            <if test="pojo.isReview != null">`is_review` = #{pojo.isReview},</if>
+            <if test="pojo.tagId != null">`tag_id` = #{pojo.tagId},</if>
+            <if test="pojo.userName != null">`user_name` = #{pojo.userName},</if>
+            <if test="pojo.id != null">`id` = #{pojo.id},</if>
+            <if test="pojo.isDel != null">`is_del` = #{pojo.isDel},</if>
+            <if test="pojo.createTime != null">`create_time` = #{pojo.createTime},</if>
+            <if test="pojo.updateTime != null">`update_time` = #{pojo.updateTime},</if>
+            <if test="pojo.state != null">`state` = #{pojo.state}</if>
+            <if test="pojo.readCount != null">`read_count` = #{pojo.readCount}</if>
+
         </set>
         WHERE id = #{pojo.id}
     </update>
+
+    <select id="queryArticleList" resultType="com.technicalinterest.group.dto.ArticlesDTO" parameterType="com.technicalinterest.group.dto.QueryArticleDTO">
+        select t1.id,title,t1.user_name as userName,t1.submit,t1.create_time as createTime,t1.category_id as categoryId,t2.name AS categoryCN,
+        t1.tag_id AS tagId,t3.name AS tagCN,t1.is_top as isTop,t1.read_count as readCount,
+        (SELECT count(1) FROM v_comment t4 WHERE t4.article_id=t1.id and t4.parent_id=0)as commentNum
+        from v_article t1 left join v_category t2 on t1.category_id=t2.id
+        LEFT JOIN v_tag t3 on t1.tag_id=t3.id where t1.is_del=0
+            <if test="pojo.userName != null and pojo.userName != ''">and t1.user_name=#{pojo.userName}</if>
+            <if test="pojo.state != null">and t1.state=#{pojo.state}</if>
+            <if test="pojo.condition != null and pojo.condition !=''">and t1.title like CONCAT('%',#{pojo.condition},'%')</if>
+            <if test="pojo.condition != null and pojo.condition !=''">and t1.submit like CONCAT('%',#{pojo.condition},'%')</if>
+            <if test="pojo.archiveTime != null and pojo.condition !=''">and date_format(t1.create_time,'%Y年%m月' )=#{pojo.archiveTime}</if>
+        order by
+        <if test="pojo.userName != null and pojo.userName != ''">t1.is_top,</if>
+        t1.id desc
+
+    </select>
+
+    <select id="queryArticleListCount" resultType="java.lang.Integer" parameterType="com.technicalinterest.group.dto.QueryArticleDTO">
+        select count(1) from v_article where is_del=0
+            <if test="pojo.userName != null and pojo.userName != ''">and user_name=#{pojo.userName}</if>
+            <if test="pojo.state != null">and state=#{pojo.state}</if>
+            <if test="pojo.condition != null and pojo.condition !=''">and title like CONCAT('%',#{pojo.condition},'%')</if>
+            <if test="pojo.condition != null and pojo.condition !=''">and submit like CONCAT('%',#{pojo.condition},'%')</if>
+            <if test="pojo.archiveTime != null and pojo.condition !=''">and date_format(create_time,'%Y年%m月' )=#{pojo.archiveTime}</if>
+    </select>
+
+    <select id="getArticleInfo" resultType="com.technicalinterest.group.dto.ArticlesDTO">
+        select t1.id,t1.title,t1.user_name as userName,t1.submit,t1.create_time as createTime,t1.category_id as categoryId,t2.name AS categoryCN,
+        t1.tag_id AS tagId,t3.name AS tagCN,t1.is_top as isTop,t1.read_count as readCount,
+        (SELECT count(1) FROM v_like t5 WHERE t5.source_id=t1.id) AS likeCount
+        <if test="userName!=null and userName!=''">
+            ,(SELECT count(1) FROM v_collection t4 WHERE t4.article_id=t1.id and t4.user_name=#{userName}) AS vCollection,
+            (SELECT count(1) FROM v_like t5 WHERE t5.source_id=t1.id and t5.user_name=#{userName}) AS vLike
+        </if>
+        from v_article t1 left join v_category t2 on t1.category_id=t2.id
+        LEFT JOIN v_tag t3 on t1.tag_id=t3.id
+        where t1.id=#{id} and t1.is_del=0
+    </select>
+
+    <select id="queryArticleListOrderBy" resultType="com.technicalinterest.group.dto.ArticlesDTO">
+        select id,title,user_name as userName,create_time as createTime from v_article where state=1 and is_del=0
+        <if test="userName!=null and userName!=''">and user_name=#{userName}</if>
+        <if test="flag==1">
+            order by create_time desc
+        </if>
+        <if test="flag==2">
+            order by read_count desc
+        </if>
+        limit 0,10
+    </select>
+
+    <select id="queryArticleListArchive" resultType="com.technicalinterest.group.dto.ArticlesDTO">
+        select date_format(create_time,'%Y年%m月' ) as time,count(id)as sum,user_name as userName from v_article where state=1 and is_del=0
+        <if test="userName!=null and userName!=''">and user_name=#{userName}</if>
+        group by date_format(create_time,'%Y-%m')
+    </select>
+
+    <delete id="delArticle">
+        delete from v_article where id=#{id}
+    </delete>
+
+    <update id="updateReadCount">
+        update v_article set read_count=(read_count+1) where id=#{id}
+    </update>
+
+
+    <select id="allArticleList" resultType="com.technicalinterest.group.dto.ArticlesDTO" parameterType="com.technicalinterest.group.dto.QueryArticleDTO">
+        select t1.id,title,t1.user_name as userName,t1.submit,t1.create_time as createTime,t1.category_id as categoryId,t2.name AS categoryCN,
+        t1.tag_id AS tagId,t3.name AS tagCN,t1.read_count as readCount,t1.is_del as isDel
+        from v_article t1 left join v_category t2 on t1.category_id=t2.id
+        LEFT JOIN v_tag t3 on t1.tag_id=t3.id
+        <if test="pojo.userName != null and pojo.userName != ''">and t1.user_name=#{pojo.userName}</if>
+        <if test="pojo.state != null">and t1.state=#{pojo.state}</if>
+        <if test="pojo.condition != null and pojo.condition !=''">and t1.title like CONCAT('%',#{pojo.condition},'%')</if>
+        <if test="pojo.condition != null and pojo.condition !=''">and t1.submit like CONCAT('%',#{pojo.condition},'%')</if>
+        <if test="pojo.archiveTime != null and pojo.condition !=''">and date_format(t1.create_time,'%Y年%m月' )=#{pojo.archiveTime}</if>
+        order by t1.id desc
+
+    </select>
+
+    <select id="allArticleListCount" resultType="java.lang.Integer" parameterType="com.technicalinterest.group.dto.QueryArticleDTO">
+        select count(1) from v_article
+        <if test="pojo.userName != null and pojo.userName != ''">and user_name=#{pojo.userName}</if>
+        <if test="pojo.state != null">and state=#{pojo.state}</if>
+        <if test="pojo.condition != null and pojo.condition !=''">and title like CONCAT('%',#{pojo.condition},'%')</if>
+        <if test="pojo.condition != null and pojo.condition !=''">and submit like CONCAT('%',#{pojo.condition},'%')</if>
+        <if test="pojo.archiveTime != null and pojo.condition !=''">and date_format(create_time,'%Y年%m月' )=#{pojo.archiveTime}</if>
+    </select>
 </mapper>
 
